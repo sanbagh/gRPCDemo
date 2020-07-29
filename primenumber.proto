@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package primernumber;
+
+message Request {
+	int32 number=1;
+}
+
+message ResponseManyTimes {
+	int32 result =1;
+}
+service PrimeNumberDecomposition{
+	rpc GetPrimeNumberDecomposition(Request) returns (stream ResponseManyTimes){}
+}

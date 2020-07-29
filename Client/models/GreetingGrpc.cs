@@ -14,6 +14,8 @@ namespace Greet {
 
     static readonly grpc::Marshaller<global::Greet.GreetingRequest> __Marshaller_greet_GreetingRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Greet.GreetingRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Greet.GreetingResponse> __Marshaller_greet_GreetingResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Greet.GreetingResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Greet.GreetingManyTimesRequest> __Marshaller_greet_GreetingManyTimesRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Greet.GreetingManyTimesRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Greet.GreetingManyTimesResponse> __Marshaller_greet_GreetingManyTimesResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Greet.GreetingManyTimesResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Greet.GreetingRequest, global::Greet.GreetingResponse> __Method_GreetFunc = new grpc::Method<global::Greet.GreetingRequest, global::Greet.GreetingResponse>(
         grpc::MethodType.Unary,
@@ -21,6 +23,13 @@ namespace Greet {
         "GreetFunc",
         __Marshaller_greet_GreetingRequest,
         __Marshaller_greet_GreetingResponse);
+
+    static readonly grpc::Method<global::Greet.GreetingManyTimesRequest, global::Greet.GreetingManyTimesResponse> __Method_GreetManyTimes = new grpc::Method<global::Greet.GreetingManyTimesRequest, global::Greet.GreetingManyTimesResponse>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "GreetManyTimes",
+        __Marshaller_greet_GreetingManyTimesRequest,
+        __Marshaller_greet_GreetingManyTimesResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -33,6 +42,11 @@ namespace Greet {
     public abstract partial class GreetingServiceBase
     {
       public virtual global::System.Threading.Tasks.Task<global::Greet.GreetingResponse> GreetFunc(global::Greet.GreetingRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task GreetManyTimes(global::Greet.GreetingManyTimesRequest request, grpc::IServerStreamWriter<global::Greet.GreetingManyTimesResponse> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -78,6 +92,14 @@ namespace Greet {
       {
         return CallInvoker.AsyncUnaryCall(__Method_GreetFunc, null, options, request);
       }
+      public virtual grpc::AsyncServerStreamingCall<global::Greet.GreetingManyTimesResponse> GreetManyTimes(global::Greet.GreetingManyTimesRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GreetManyTimes(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::Greet.GreetingManyTimesResponse> GreetManyTimes(global::Greet.GreetingManyTimesRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_GreetManyTimes, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override GreetingServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -90,7 +112,8 @@ namespace Greet {
     public static grpc::ServerServiceDefinition BindService(GreetingServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GreetFunc, serviceImpl.GreetFunc).Build();
+          .AddMethod(__Method_GreetFunc, serviceImpl.GreetFunc)
+          .AddMethod(__Method_GreetManyTimes, serviceImpl.GreetManyTimes).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -100,6 +123,7 @@ namespace Greet {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, GreetingServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_GreetFunc, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Greet.GreetingRequest, global::Greet.GreetingResponse>(serviceImpl.GreetFunc));
+      serviceBinder.AddMethod(__Method_GreetManyTimes, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Greet.GreetingManyTimesRequest, global::Greet.GreetingManyTimesResponse>(serviceImpl.GreetManyTimes));
     }
 
   }
