@@ -1,0 +1,12 @@
+syntax ="proto3";
+package squre;
+message Request {
+	int32 number =1;
+}
+message Response{
+	double sqrt = 1;
+}
+
+service SquareRootService{
+	rpc CalculateSquare(Request) returns (Response){}
+}

@@ -1,10 +1,12 @@
 ﻿using Greet;
 using Grpc.Core;
 using Primernumber;
+using Squre;
 using System;
 using System.Linq;
 using static Greet.GreetingService;
 using static Primernumber.PrimeNumberDecomposition;
+using static Squre.SquareRootService;
 
 namespace Client
 {
@@ -29,7 +31,7 @@ namespace Client
             }
             Console.WriteLine(result.Response);
             var client2 = new PrimeNumberDecompositionClient(channel);
-            var stream2 = client2.GetPrimeNumberDecomposition(new Request { Number = 120 });
+            var stream2 = client2.GetPrimeNumberDecomposition(new Primernumber.Request { Number = 120 });
             while (await stream2.ResponseStream.MoveNext())
             {
                 Console.Write(stream2.ResponseStream.Current.Result + " *");
@@ -44,6 +46,19 @@ namespace Client
             await stream3.RequestStream.CompleteAsync();
             var streamResult = await stream3.ResponseAsync;
             Console.WriteLine(streamResult.Response);
+
+            //sqrt
+            var sqrtClient = new SquareRootServiceClient(channel);
+            try
+            {
+                var sqrt = await sqrtClient.CalculateSquareAsync(new Squre.Request { Number = -1 });
+                Console.WriteLine(sqrt.Sqrt);
+            }
+            catch (RpcException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             var stream4 = client.GreetEveryone();
             foreach (int i in Enumerable.Range(1, 5))
             {
@@ -54,6 +69,8 @@ namespace Client
                 Console.Write(stream4.ResponseStream.Current.Response);
             }
             await stream4.RequestStream.CompleteAsync();
+
+           
             Console.ReadLine();
         }
     }
