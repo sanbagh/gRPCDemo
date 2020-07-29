@@ -32,12 +32,17 @@ namespace Greet {
             "Ii0KGUdyZWV0aW5nTWFueVRpbWVzUmVzcG9uc2USEAoIcmVzcG9uc2UYASAB",
             "KAkiNwoTR3JlZXRpbmdMb25nUmVxdWVzdBIgCgdyZXF1ZXN0GAEgASgLMg8u",
             "Z3JlZXQuR3JlZXRpbmciKAoUR3JlZXRpbmdMb25nUmVzcG9uc2USEAoIcmVz",
-            "cG9uc2UYASABKAky9AEKD0dyZWV0aW5nU2VydmljZRI+CglHcmVldEZ1bmMS",
-            "Fi5ncmVldC5HcmVldGluZ1JlcXVlc3QaFy5ncmVldC5HcmVldGluZ1Jlc3Bv",
-            "bnNlIgASVwoOR3JlZXRNYW55VGltZXMSHy5ncmVldC5HcmVldGluZ01hbnlU",
-            "aW1lc1JlcXVlc3QaIC5ncmVldC5HcmVldGluZ01hbnlUaW1lc1Jlc3BvbnNl",
-            "IgAwARJICglHcmVldExvbmcSGi5ncmVldC5HcmVldGluZ0xvbmdSZXF1ZXN0",
-            "GhsuZ3JlZXQuR3JlZXRpbmdMb25nUmVzcG9uc2UiACgBYgZwcm90bzM="));
+            "cG9uc2UYASABKAkiOwoXR3JlZXRpbmdFdmVyeW9uZVJlcXVlc3QSIAoHcmVx",
+            "dWVzdBgBIAEoCzIPLmdyZWV0LkdyZWV0aW5nIiwKGEdyZWV0aW5nRXZlcnlv",
+            "bmVSZXNwb25zZRIQCghyZXNwb25zZRgBIAEoCTLMAgoPR3JlZXRpbmdTZXJ2",
+            "aWNlEj4KCUdyZWV0RnVuYxIWLmdyZWV0LkdyZWV0aW5nUmVxdWVzdBoXLmdy",
+            "ZWV0LkdyZWV0aW5nUmVzcG9uc2UiABJXCg5HcmVldE1hbnlUaW1lcxIfLmdy",
+            "ZWV0LkdyZWV0aW5nTWFueVRpbWVzUmVxdWVzdBogLmdyZWV0LkdyZWV0aW5n",
+            "TWFueVRpbWVzUmVzcG9uc2UiADABEkgKCUdyZWV0TG9uZxIaLmdyZWV0Lkdy",
+            "ZWV0aW5nTG9uZ1JlcXVlc3QaGy5ncmVldC5HcmVldGluZ0xvbmdSZXNwb25z",
+            "ZSIAKAESVgoNR3JlZXRFdmVyeW9uZRIeLmdyZWV0LkdyZWV0aW5nRXZlcnlv",
+            "bmVSZXF1ZXN0Gh8uZ3JlZXQuR3JlZXRpbmdFdmVyeW9uZVJlc3BvbnNlIgAo",
+            "ATABYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -47,7 +52,9 @@ namespace Greet {
             new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingManyTimesRequest), global::Greet.GreetingManyTimesRequest.Parser, new[]{ "Request" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingManyTimesResponse), global::Greet.GreetingManyTimesResponse.Parser, new[]{ "Response" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingLongRequest), global::Greet.GreetingLongRequest.Parser, new[]{ "Request" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingLongResponse), global::Greet.GreetingLongResponse.Parser, new[]{ "Response" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingLongResponse), global::Greet.GreetingLongResponse.Parser, new[]{ "Response" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingEveryoneRequest), global::Greet.GreetingEveryoneRequest.Parser, new[]{ "Request" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Greet.GreetingEveryoneResponse), global::Greet.GreetingEveryoneResponse.Parser, new[]{ "Response" }, null, null, null, null)
           }));
     }
     #endregion
@@ -976,6 +983,270 @@ namespace Greet {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(GreetingLongResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Response.Length != 0) {
+        Response = other.Response;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Response = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GreetingEveryoneRequest : pb::IMessage<GreetingEveryoneRequest> {
+    private static readonly pb::MessageParser<GreetingEveryoneRequest> _parser = new pb::MessageParser<GreetingEveryoneRequest>(() => new GreetingEveryoneRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GreetingEveryoneRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Greet.GreetingReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GreetingEveryoneRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GreetingEveryoneRequest(GreetingEveryoneRequest other) : this() {
+      request_ = other.request_ != null ? other.request_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GreetingEveryoneRequest Clone() {
+      return new GreetingEveryoneRequest(this);
+    }
+
+    /// <summary>Field number for the "request" field.</summary>
+    public const int RequestFieldNumber = 1;
+    private global::Greet.Greeting request_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Greet.Greeting Request {
+      get { return request_; }
+      set {
+        request_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GreetingEveryoneRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GreetingEveryoneRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Request, other.Request)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (request_ != null) hash ^= Request.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (request_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Request);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (request_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Request);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GreetingEveryoneRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.request_ != null) {
+        if (request_ == null) {
+          Request = new global::Greet.Greeting();
+        }
+        Request.MergeFrom(other.Request);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (request_ == null) {
+              Request = new global::Greet.Greeting();
+            }
+            input.ReadMessage(Request);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GreetingEveryoneResponse : pb::IMessage<GreetingEveryoneResponse> {
+    private static readonly pb::MessageParser<GreetingEveryoneResponse> _parser = new pb::MessageParser<GreetingEveryoneResponse>(() => new GreetingEveryoneResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GreetingEveryoneResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Greet.GreetingReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GreetingEveryoneResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GreetingEveryoneResponse(GreetingEveryoneResponse other) : this() {
+      response_ = other.response_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GreetingEveryoneResponse Clone() {
+      return new GreetingEveryoneResponse(this);
+    }
+
+    /// <summary>Field number for the "response" field.</summary>
+    public const int ResponseFieldNumber = 1;
+    private string response_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Response {
+      get { return response_; }
+      set {
+        response_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GreetingEveryoneResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GreetingEveryoneResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Response != other.Response) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Response.Length != 0) hash ^= Response.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Response.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Response);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Response.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Response);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GreetingEveryoneResponse other) {
       if (other == null) {
         return;
       }

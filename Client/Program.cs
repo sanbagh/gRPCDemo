@@ -44,6 +44,16 @@ namespace Client
             await stream3.RequestStream.CompleteAsync();
             var streamResult = await stream3.ResponseAsync;
             Console.WriteLine(streamResult.Response);
+            var stream4 = client.GreetEveryone();
+            foreach (int i in Enumerable.Range(1, 5))
+            {
+                await stream4.RequestStream.WriteAsync(new GreetingEveryoneRequest { Request = new Greeting { Firstname = "Sanjeev", Lastname = "baghel" } });
+            }
+            while (await stream4.ResponseStream.MoveNext())
+            {
+                Console.Write(stream4.ResponseStream.Current.Response);
+            }
+            await stream4.RequestStream.CompleteAsync();
             Console.ReadLine();
         }
     }

@@ -24,8 +24,15 @@ message GreetingLongRequest{
 message GreetingLongResponse{
 	string response =1;
 }
+message GreetingEveryoneRequest{
+	Greeting request = 1;
+}
+message GreetingEveryoneResponse{
+	string response =1;
+}
 service GreetingService{
 	rpc GreetFunc(GreetingRequest) returns (GreetingResponse) {}
 	rpc GreetManyTimes(GreetingManyTimesRequest) returns (stream GreetingManyTimesResponse){}
 	rpc GreetLong(stream GreetingLongRequest) returns (GreetingLongResponse){}
+	rpc GreetEveryone(stream GreetingEveryoneRequest) returns (stream GreetingEveryoneResponse){}
 }
