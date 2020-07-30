@@ -3,6 +3,7 @@ using Grpc.Core;
 using Primernumber;
 using Squre;
 using System;
+using System.IO;
 using System.Linq;
 using static Greet.GreetingService;
 using static Primernumber.PrimeNumberDecomposition;
@@ -14,7 +15,12 @@ namespace Client
     {
         static async System.Threading.Tasks.Task Main(string[] args)
         {
-            Channel channel = new Channel("localhost:5000", ChannelCredentials.Insecure);
+            var clientCert = File.ReadAllText("../../../ssl/client.crt");
+            var clientKey = File.ReadAllText("../../../ssl/client.key");
+            var caCert = File.ReadAllText("../../../ssl/ca.crt");
+            var channelCredential = new SslCredentials(caCert, new KeyCertificatePair(clientCert, clientKey));
+            Channel channel = new Channel("localhost",5000, channelCredential);
+            //Channel channel = new Channel("localhost:5000", ChannelCredentials.Insecure);
             await channel.ConnectAsync().ContinueWith((task) =>
             {
                 if (task.Status == System.Threading.Tasks.TaskStatus.RanToCompletion)
